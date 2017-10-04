@@ -10,7 +10,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
 {
 
-    String Operation = "";
+    String Operation = "";      // String that is displayed to the entry field
+    float Number1, Number2 = 0; // Variables that hold the numbers being calculated with
+    float Result = 0;
+    String secondNumber = "";   // String to hold the number for the second user entry
+    String Operator = "";       // String to hold the desired operator
+    boolean operatorIn = false; // Boolean for if there is already an operator put in by the user
+    boolean secondEntry = false;// Boolean to check if the user started entering a second entry
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,8 +31,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "0";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "0";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "0";
+                    Operation = Operation + "0";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -35,8 +51,19 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "1";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "1";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "1";
+                    Operation = Operation + "1";
+                    Entry.setText(Operation);
+                }
+
             }
         });
 
@@ -45,8 +72,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "2";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "2";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "2";
+                    Operation = Operation + "2";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -55,8 +92,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "3";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "3";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "3";
+                    Operation = Operation + "3";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -65,8 +112,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "4";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "4";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "4";
+                    Operation = Operation + "4";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -75,8 +132,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "5";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "5";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "5";
+                    Operation = Operation + "5";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -85,8 +152,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "6";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "6";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "6";
+                    Operation = Operation + "6";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -95,8 +172,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "7";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "7";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "7";
+                    Operation = Operation + "7";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -105,8 +192,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "8";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "8";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "8";
+                    Operation = Operation + "8";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -115,8 +212,18 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + "9";
-                Entry.setText(Operation);
+                if(!operatorIn)
+                {
+                    Operation = Operation + "9";
+                    Entry.setText(Operation);
+                }
+                else if(operatorIn)
+                {
+                    secondEntry = true;
+                    secondNumber = secondNumber + "9";
+                    Operation = Operation + "9";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -126,6 +233,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Operation = "";
+                Number1 = 0;
+                Number2 = 0;
+                secondEntry = false;
+                secondNumber = "";
+                operatorIn = false;
+                Operator = "";
                 Entry.setText(Operation);
             }
         });
@@ -135,8 +248,48 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + " + ";
-                Entry.setText(Operation);
+                if(Operation == "")
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                else if(operatorIn && !secondEntry)
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && secondEntry)
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 + Number2;
+                    Number1 = Result;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Operation = Number1 + " + ";
+                    operatorIn = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                }
+                else if(!operatorIn)
+                {
+                    Number1 = Float.parseFloat(Operation);
+                    Operator = "+";
+                    operatorIn = true;
+                    Operation = Operation + " + ";
+                    Entry.setText(Operation);
+                }
+
             }
         });
 
@@ -145,8 +298,47 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + " - ";
-                Entry.setText(Operation);
+                if(Operation == "")
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && !secondEntry)
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && secondEntry)
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 - Number2;
+                    Number1 = Result;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Operation = Number1 + " - ";
+                    operatorIn = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                }
+                else if(!operatorIn)
+                {
+                    Number1 = Float.parseFloat(Operation);
+                    Operator = "-";
+                    operatorIn = true;
+                    Operation = Operation + " - ";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -177,6 +369,55 @@ public class MainActivity extends AppCompatActivity
             {
                 Operation = Operation + ".";
                 Entry.setText(Operation);
+            }
+        });
+
+        final Button ButtonEnter = (Button) findViewById(R.id.Enter);
+        ButtonEnter.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                if(Operator == "+")
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 + Number2;
+                    Operation = "" + Result;
+                    Entry.setText(Operation);
+                }
+                else if(Operator == "/")
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 / Number2;
+                    Operation = "" + Result;
+                    Entry.setText(Operation);
+                }
+                else if(Operator == "x")
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 * Number2;
+                    Operation = "" + Result;
+                    Entry.setText(Operation);
+                }
+                else if(Operator == "-")
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    Result = Number1 - Number2;
+                    Operation = "" + Result;
+                    Entry.setText(Operation);
+                }
+                else if(!secondEntry && operatorIn)
+                {
+                    Operation = "ERROR";
+                    Entry.setText(Operation);
+
+                }
+                Operation = "";
+                operatorIn = false;
+                Number1 = 0;
+                Number2 = 0;
+                secondEntry = false;
+                secondNumber = "";
+
             }
         });
 

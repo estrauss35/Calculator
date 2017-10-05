@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity
 
     String Operation = "";      // String that is displayed to the entry field
     float Number1, Number2 = 0; // Variables that hold the numbers being calculated with
-    float Result = 0;
+    float Result = 0;           // Float to hold the result of the calculation
     String secondNumber = "";   // String to hold the number for the second user entry
     String Operator = "";       // String to hold the desired operator
     boolean operatorIn = false; // Boolean for if there is already an operator put in by the user
@@ -271,15 +272,44 @@ public class MainActivity extends AppCompatActivity
                 }
                 if(operatorIn && secondEntry)
                 {
-                    Number2 = Float.parseFloat(secondNumber);
-                    Result = Number1 + Number2;
-                    Number1 = Result;
-                    Number2 = 0;
-                    secondEntry = false;
-                    Operation = Number1 + " + ";
-                    operatorIn = false;
-                    secondNumber = "";
-                    Entry.setText(Operation);
+                    if(operatorIn && secondEntry)
+                    {
+                        Number2 = Float.parseFloat(secondNumber);
+                        if(Operator == "+")
+                        {
+                            Result = Number1 + Number2;
+                        }
+                        else if(Operator == "-")
+                        {
+                            Result = Number1 - Number2;
+                        }
+                        else if(Operator == "*")
+                        {
+                            Result = Number1 * Number2;
+                        }
+                        else if(Operator == "/")
+                        {
+                            if(Number2 == 0)
+                            {
+                                Entry.setText("ERROR");
+                                return;
+                            }
+                            else
+                            {
+                                Result = Number1 / Number2;
+                                Operation = "" + Result;
+                                Entry.setText(Operation);
+                            }
+                        }
+                        Number1 = Result;
+                        Number2 = 0;
+                        secondEntry = false;
+                        Operation = Number1 + " + ";
+                        operatorIn = true;
+                        secondNumber = "";
+                        Operator = "+";
+                        Entry.setText(Operation);
+                    }
                 }
                 else if(!operatorIn)
                 {
@@ -321,15 +351,44 @@ public class MainActivity extends AppCompatActivity
                 }
                 if(operatorIn && secondEntry)
                 {
-                    Number2 = Float.parseFloat(secondNumber);
-                    Result = Number1 - Number2;
-                    Number1 = Result;
-                    Number2 = 0;
-                    secondEntry = false;
-                    Operation = Number1 + " - ";
-                    operatorIn = false;
-                    secondNumber = "";
-                    Entry.setText(Operation);
+                    if(operatorIn && secondEntry)
+                    {
+                        Number2 = Float.parseFloat(secondNumber);
+                        if(Operator == "+")
+                        {
+                            Result = Number1 + Number2;
+                        }
+                        else if(Operator == "-")
+                        {
+                            Result = Number1 - Number2;
+                        }
+                        else if(Operator == "*")
+                        {
+                            Result = Number1 * Number2;
+                        }
+                        else if(Operator == "/")
+                        {
+                            if(Number2 == 0)
+                            {
+                                Entry.setText("ERROR");
+                                return;
+                            }
+                            else
+                            {
+                                Result = Number1 / Number2;
+                                Operation = "" + Result;
+                                Entry.setText(Operation);
+                            }
+                        }
+                        Number1 = Result;
+                        Number2 = 0;
+                        secondEntry = false;
+                        Operation = Number1 + " - ";
+                        operatorIn = true;
+                        secondNumber = "";
+                        Operator = "-";
+                        Entry.setText(Operation);
+                    }
                 }
                 else if(!operatorIn)
                 {
@@ -347,8 +406,76 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + " x ";
-                Entry.setText(Operation);
+                if(Operation == "")
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && !secondEntry)
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && secondEntry)
+                {
+                    if(operatorIn && secondEntry)
+                    {
+                        Number2 = Float.parseFloat(secondNumber);
+                        if(Operator == "+")
+                        {
+                            Result = Number1 + Number2;
+                        }
+                        else if(Operator == "-")
+                        {
+                            Result = Number1 - Number2;
+                        }
+                        else if(Operator == "x")
+                        {
+                            Result = Number1 * Number2;
+                        }
+                        else if(Operator == "/")
+                        {
+                            if(Number2 == 0)
+                            {
+                                Entry.setText("ERROR");
+                                return;
+                            }
+                            else
+                            {
+                                Result = Number1 / Number2;
+                                Operation = "" + Result;
+                                Entry.setText(Operation);
+                            }
+                        }
+                        Number1 = Result;
+                        Number2 = 0;
+                        secondEntry = false;
+                        Operation = Number1 + " x ";
+                        operatorIn = true;
+                        secondNumber = "";
+                        Operator = "x";
+                        Entry.setText(Operation);
+                    }
+                }
+                else if(!operatorIn)
+                {
+                    Number1 = Float.parseFloat(Operation);
+                    Operator = "x";
+                    operatorIn = true;
+                    Operation = Operation + " x ";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -357,8 +484,73 @@ public class MainActivity extends AppCompatActivity
         {
             public void onClick(View v)
             {
-                Operation = Operation + " / ";
-                Entry.setText(Operation);
+                if(Operation == "")
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && !secondEntry)
+                {
+                    Operation = "ERROR";
+                    operatorIn = false;
+                    Number1 = 0;
+                    Number2 = 0;
+                    secondEntry = false;
+                    secondNumber = "";
+                    Entry.setText(Operation);
+                    Operation = "";
+                }
+                if(operatorIn && secondEntry)
+                {
+                    Number2 = Float.parseFloat(secondNumber);
+                    if(Operator == "+")
+                    {
+                        Result = Number1 + Number2;
+                    }
+                    else if(Operator == "-")
+                    {
+                        Result = Number1 - Number2;
+                    }
+                    else if(Operator == "*")
+                    {
+                        Result = Number1 * Number2;
+                    }
+                    else if(Operator == "/")
+                    {
+                        if(Number2 == 0)
+                        {
+                            Entry.setText("ERROR");
+                            return;
+                        }
+                        else
+                        {
+                            Result = Number1 / Number2;
+                            Operation = "" + Result;
+                            Entry.setText(Operation);
+                        }
+                    }
+                    Number1 = Result;
+                    Number2 = 0;
+                    secondEntry = false;
+                    Operation = Number1 + " / ";
+                    operatorIn = true;
+                    secondNumber = "";
+                    Operator = "/";
+                    Entry.setText(Operation);
+                }
+                else if(!operatorIn)
+                {
+                    Number1 = Float.parseFloat(Operation);
+                    Operator = "/";
+                    operatorIn = true;
+                    Operation = Operation + " / ";
+                    Entry.setText(Operation);
+                }
             }
         });
 
@@ -387,9 +579,17 @@ public class MainActivity extends AppCompatActivity
                 else if(Operator == "/")
                 {
                     Number2 = Float.parseFloat(secondNumber);
-                    Result = Number1 / Number2;
-                    Operation = "" + Result;
-                    Entry.setText(Operation);
+                    if(Number2 == 0)
+                    {
+                        Entry.setText("ERROR");
+                    }
+                    else
+                    {
+                        Result = Number1 / Number2;
+                        Operation = "" + Result;
+                        Entry.setText(Operation);
+                    }
+
                 }
                 else if(Operator == "x")
                 {
@@ -421,6 +621,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        final Button ButtonSetting = (Button) findViewById(R.id.Settings);
+        ButtonSetting.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                startActivity(new Intent(MainActivity.this ,Settings.class));
+            }
+        });
     }
 
 

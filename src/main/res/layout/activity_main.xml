@@ -214,8 +214,8 @@
 
     <Button
         android:id="@+id/Zero"
-        android:layout_width="183dp"
-        android:layout_height="68dp"
+        android:layout_width="182dp"
+        android:layout_height="67dp"
         android:text="0"
         android:textAlignment="center"
         android:background="#CFCFCF"
@@ -223,7 +223,8 @@
         app:layout_constraintRight_toLeftOf="@+id/Decimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/EntryField"
-        app:layout_constraintTop_toBottomOf="@+id/One" />
+        app:layout_constraintTop_toBottomOf="@+id/One"
+        tools:layout_editor_absoluteY="398dp" />
 
     <Button
         android:id="@+id/Two"
